@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from core_ap.erp.models import Category, Product
+"""importamos modelos creados en core_ap/erp"""
 
 
 def myfirstview(request):
@@ -19,3 +20,11 @@ def mysecondview(request):
         'products': Product.objects.all()
     }
     return render(request, 'second.html', data)
+
+
+def vistaprueba(request):
+    data = {
+        'name': 'Bryan'
+    }
+    return JsonResponse(data)
+
