@@ -3,7 +3,7 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
     <link rel="stylesheet"
-          href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+          href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css'%}"/>
     <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
     <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
     <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
@@ -33,7 +33,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary btn-flat">
+            <button class="btn btn-primary btn-flat btnTest ">
                 <i class="fas fa-plus"></i> Nuevo registro
             </button>
         </div>
@@ -47,6 +47,21 @@
                 responsive: true,
                 autoWidth: false
             });
+
+            $('.btnTest').on('click', function () {
+                $.ajax({
+                    url: '{% url 'erp:category_list' %}',
+                    type: 'POST',
+                    data: {id: 1},
+                    dataTyppe: 'json'
+                }).done(function (data) {
+                    console.log(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus+': '+errorThrown);
+                }).always(function () {
+                    alert("complete");
+                })
+            })
         });
     </script>
 {% endblock %}
