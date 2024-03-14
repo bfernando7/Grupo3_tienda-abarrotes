@@ -1,2 +1,2 @@
-# Grupo3_tienda-abarrotes
-Proyecto desarrollo web 2023
+# Punto de venta - Django
+punto de venta desarrollado con django 2024
